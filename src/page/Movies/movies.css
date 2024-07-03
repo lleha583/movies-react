@@ -1,0 +1,12 @@
+.section {
+    display: flex;
+}
+
+
+.films {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+

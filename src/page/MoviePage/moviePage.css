@@ -1,0 +1,54 @@
+.info {
+    display: flex;
+    gap: 50px;
+    margin: 0 10%;
+}
+
+.info_poster {
+    max-width: 400px;
+}
+
+.info_name {
+
+}
+
+.info h2 {
+    margin: 0 10px 20px;
+    font-size: 60px;
+}
+
+.info_full {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+
+.info_tag {
+    display: inline;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 25px;
+    color: rgb(73, 73, 73);
+}
+
+.info_content {
+    display: inline;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 25px;
+    color: #7c7c7c;
+}
+
+.box {
+    margin: 140px;
+}
+
+.box p {
+    display: inline;
+    width: 100%;
+    font-size: 35px;
+    color: #7c7c7c;
+    margin: 50px;
+}

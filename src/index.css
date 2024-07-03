@@ -1,0 +1,33 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #000000;
+}
+
+section {
+  margin: 80px auto;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  color: #c5c5c5;
+  font-size: 60px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: #c5c5c5;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  color: #c5c5c5;
+}
+
+.block {
+  margin: 80px 80px;
+}
+

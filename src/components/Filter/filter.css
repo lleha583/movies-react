@@ -1,0 +1,59 @@
+.filter {
+    width: 250px;
+    padding: 15px;
+}
+
+h2 {
+    font-size: 40px;
+    color: #c5c5c5;
+}
+
+.filter__inner div {
+    margin-top: 30px;
+}
+
+.filter p {
+    margin: 10px;
+}
+
+select {
+    margin-top: 20px;
+    width: 200px;
+    height: 30px;
+    background-color: #c5c5c5;
+}
+
+option {
+    font-size: 20px;
+    margin: 20px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #5f5f5f;
+    color: #c5c5c5;
+}
+
+.div_btn {
+    display: inline;
+}
+
+.search_movie {
+    text-align: end;
+    margin-right: 40px;
+}
+
+.search_movie button {
+    border-radius: 50px;
+    border: none;
+    width: 70px;
+    height: 40px;
+    transition: 0.3s;
+}
+
+.search_movie button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
