@@ -19,7 +19,6 @@ export default function Catalog(props: any) {
     let scroll = window.scrollY;
 
     if (windowHeight + scroll === maxHeight) {
-      console.log(props.urlSetting)
       props.setUrlSetting({
         year: '',
         search: 'avengers',
@@ -27,8 +26,6 @@ export default function Catalog(props: any) {
         page: props.urlSetting.page + 1,
         url: 'https://www.omdbapi.com/?apikey=ee37e9cf',
       })
-      console.log(props.urlSetting)
-      props.setUrl(`${props.urlSetting.url}&type=${props.urlSetting.type}&s=${props.urlSetting.search}&page=${props.urlSetting.page}&y=${props.urlSetting.year}`);
     }
   };
 

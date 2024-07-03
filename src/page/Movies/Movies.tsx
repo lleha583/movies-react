@@ -14,33 +14,32 @@ export default function Movies() {
     url: 'https://www.omdbapi.com/?apikey=ee37e9cf',
   })
 
-  const [page, setPage] = useState(1);
   const [films, setFilms] = useState<any>([]);
-  const [url, setUrl] = useState(`${urlSetting.url}&type=${urlSetting.type}&s=${urlSetting.search}&page=${urlSetting.page}&y=${urlSetting.year}`);
 
 
   useEffect(() => {
-    fetch(url, {method: "GET",})
+
+    fetch(`${urlSetting.url}&type=${urlSetting.type}&s=${urlSetting.search}&page=${urlSetting.page}&y=${urlSetting.year}`, {method: "GET",})
       .then((response) => response.json())
-      .then((value) => {setFilms([...films, ...value.Search]);
+      .then((value) => {
+        if(urlSetting.page === 1) {
+          setFilms([...value.Search]);
+        }else {
+          setFilms([...films, ...value.Search]);
+        }
         console.log(value)
 });
-  }, [url]);
+  }, [urlSetting]);
 
   return (
     <section className="section">
       <div className="filter">
-        <Filter setUrl={setUrl} urlSetting={urlSetting} />
+        <Filter setUrlSetting={setUrlSetting} urlSetting={urlSetting} />
       </div>
 
       <Suspense fallback={<h1>Load</h1>}>
-        <Catalog films={films} urlSetting={urlSetting} setUrl={setUrl} setUrlSetting={setUrlSetting} />
+        <Catalog films={films} urlSetting={urlSetting} setUrlSetting={setUrlSetting} />
       </Suspense>
-      <div className="pages">
-          {
-            
-          }
-      </div>
 
     </section>
   );

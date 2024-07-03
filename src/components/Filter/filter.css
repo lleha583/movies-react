@@ -57,3 +57,21 @@ button {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.type input:focus {
+    background-color: #353535;
+    border: 2px solid red;
+}
+
+label {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.type input {
+    display: inline;
+    width: 20px;
+    color: #5f5f5f;
+    background-color: #c5c5c5;
+}
