@@ -9,4 +9,9 @@
     gap: 40px;
 }
 
-
+#film_scroll {
+    border: 1px solid grey;
+    border-radius: 50px;
+    width: 75%;
+    padding: 30px;
+}

@@ -1,7 +1,12 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useDeferredValue, lazy } from "react";
 import Filter from "../../components/Filter/Filter";
-import Catalog from "../../components/Catalog/Catalog";
+
+import Loading from "../../components/Loading/Loading";
 import './movies.css'
+
+const Catalog = lazy(() => {
+  return import('../../components/Catalog/Catalog');
+})
 
 export default function Movies() {
 
@@ -15,10 +20,10 @@ export default function Movies() {
   })
 
   const [films, setFilms] = useState<any>([]);
+  const defferedFilms = useDeferredValue(films)
 
 
   useEffect(() => {
-
     fetch(`${urlSetting.url}&type=${urlSetting.type}&s=${urlSetting.search}&page=${urlSetting.page}&y=${urlSetting.year}`, {method: "GET",})
       .then((response) => response.json())
       .then((value) => {
@@ -33,14 +38,15 @@ export default function Movies() {
 
   return (
     <section className="section">
+      
       <div className="filter">
         <Filter setUrlSetting={setUrlSetting} urlSetting={urlSetting} />
       </div>
-
-      <Suspense fallback={<h1>Load</h1>}>
-        <Catalog films={films} urlSetting={urlSetting} setUrlSetting={setUrlSetting} />
+      <div id="film_scroll" className="films">
+      <Suspense fallback={<Loading />}>
+        <Catalog films={defferedFilms} urlSetting={urlSetting} setUrlSetting={setUrlSetting} />
       </Suspense>
-
+      </div>
     </section>
   );
 }

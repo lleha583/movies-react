@@ -30,7 +30,7 @@ export default function Catalog(props: any) {
   };
 
   return (
-    <div id="film_scroll" className="films">
+    <>
       {props.films.map((movie: any) => {
         return (
           <Link to={movie.imdbID}>
@@ -45,6 +45,6 @@ export default function Catalog(props: any) {
           </Link>
         );
       })}
-    </div>
+    </>
   );
 }
