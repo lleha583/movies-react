@@ -1,4 +1,4 @@
-import { Suspense, useDebugValue, useDeferredValue, useEffect, useState } from "react";
+import { Suspense, useDeferredValue, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./moviePage.css";
 import noImage from "../../assets/icons/no-image.svg";

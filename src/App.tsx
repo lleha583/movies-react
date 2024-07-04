@@ -4,7 +4,7 @@ import Home from "./page/Home/Home";
 import Header from "./layout/Header/Header";
 import Footer from "./layout/Footer/Footer";
 import Movies from "./page/Movies/Movies";
-import Contact from "./page/Contact";
+import Contact from "./page/Contact/Contact";
 import MoviePage from "./page/MoviePage/MoviePage";
 
 function App() {
@@ -16,9 +16,7 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/contact" element={<Contact />} />
-        
       </Routes>
-
       <Footer />
     </>
   );

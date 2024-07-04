@@ -2,11 +2,34 @@ import "./header.css";
 import loop from "../../assets/icons/loop.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import SideBar from "../../components/Sidebar/SideBar";
 
 export default function Header() {
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState<string>('');
+  const [modal, setModal] = useState<boolean>(false);
 
+
+  const openModal = () => {
+    (modal === true) ? (setModal(!modal)) : (setModal(!modal))
+  }
+
+  
+  if (window.innerWidth < 1000) {
+    return (
+      <header>
+      <div onClick={openModal} className="modal_side">
+        <div className="btn_modal">
+          <p className="modal_line"></p>
+        </div>
+        {
+          (modal === true) ?  (<SideBar />) : ('')
+        }
+      </div>
+      </header>
+    )
+  }
+  
   return (
     <header>
       <div className="logo">
