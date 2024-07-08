@@ -15,7 +15,6 @@ export default function LineFilm(props: any) {
       .then((response) => response.json())
       .then((value) => {
         setArr([...value.Search]);
-        console.log(value);
       });
   }, []);
 

@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./catalog.css";
 import noImage from "../../assets/icons/no-image.svg";
+import { page } from "../../store/linkSlice";
 
 export default function Catalog(props: any) {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -11,7 +14,7 @@ export default function Catalog(props: any) {
     return function () {
       document.removeEventListener("scroll", scrollHandler);
     };
-  }, [props.urlSetting.page]);
+  }, []);
 
   const scrollHandler = () => {
     let maxHeight = document.body.scrollHeight;
@@ -19,13 +22,7 @@ export default function Catalog(props: any) {
     let scroll = window.scrollY;
 
     if (windowHeight + scroll === maxHeight) {
-      props.setUrlSetting({
-        year: '',
-        search: 'avengers',
-        type: 'movie',
-        page: props.urlSetting.page + 1,
-        url: 'https://www.omdbapi.com/?apikey=ee37e9cf',
-      })
+      dispatch(page());
     }
   };
 
@@ -35,9 +32,11 @@ export default function Catalog(props: any) {
         return (
           <Link to={movie.imdbID}>
             <div className="film_block" key={movie.imdbID}>
-              {
-                movie.Poster !== "N/A" ? (<img src={movie.Poster} alt="" />) : (<img src={noImage} />)
-              }
+              {movie.Poster !== "N/A" ? (
+                <img src={movie.Poster} alt="" />
+              ) : (
+                <img src={noImage} />
+              )}
               <div className="film_name">
                 <p>{movie.Title}</p>
               </div>

@@ -5,7 +5,9 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+    position: sticky;
+    left: 0;
+    top: 0;
 }
 
 .logo_start {

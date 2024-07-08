@@ -1,51 +1,42 @@
-import { useState, useEffect, Suspense, useDeferredValue, lazy } from "react";
+import { useState, Suspense, lazy, useEffect, useDeferredValue } from "react";
 import Filter from "../../components/Filter/Filter";
-
 import Loading from "../../components/Loading/Loading";
-import './movies.css'
+import { useSelector } from "react-redux";
+import { fetchData } from "../../store/linkSlice";
+import store from "../../store";
+import "./movies.css";
+import { result } from "../../store/linkSlice";
 
 const Catalog = lazy(() => {
-  return import('../../components/Catalog/Catalog');
-})
+  return import("../../components/Catalog/Catalog");
+});
 
 export default function Movies() {
+  const link = useSelector((state: any) => {return state.link});
 
-
-  const [urlSetting, setUrlSetting] = useState({
-    year: '',
-    search: 'avengers',
-    type: 'movie',
-    page: 1,
-    url: 'https://www.omdbapi.com/?apikey=ee37e9cf',
-  })
-
-  const [films, setFilms] = useState<any>([]);
-  const defferedFilms = useDeferredValue(films)
+  const [films, setFilms] = useState<any>([...result]);
+  const value = useDeferredValue(films)
 
 
   useEffect(() => {
-    fetch(`${urlSetting.url}&type=${urlSetting.type}&s=${urlSetting.search}&page=${urlSetting.page}&y=${urlSetting.year}`, {method: "GET",})
-      .then((response) => response.json())
-      .then((value) => {
-        if(urlSetting.page === 1) {
-          setFilms([...value.Search]);
-        }else {
-          setFilms([...films, ...value.Search]);
-        }
-        console.log(value)
-});
-  }, [urlSetting]);
+
+  store.dispatch(fetchData(link));
+    
+  setTimeout(() => {
+    return setFilms([...result]);
+  }, 1000)
+
+  }, [link]);
 
   return (
     <section className="section">
-      
       <div className="filter">
-        <Filter setUrlSetting={setUrlSetting} urlSetting={urlSetting} />
+        <Filter />
       </div>
       <div id="film_scroll" className="films">
-      <Suspense fallback={<Loading />}>
-        <Catalog films={defferedFilms} urlSetting={urlSetting} setUrlSetting={setUrlSetting} />
-      </Suspense>
+        <Suspense fallback={<Loading />}>
+          <Catalog films={value} />
+        </Suspense>
       </div>
     </section>
   );
