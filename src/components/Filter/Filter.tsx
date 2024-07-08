@@ -3,7 +3,7 @@ import "./filter.css";
 import { useDispatch } from "react-redux";
 import { getSearch } from "../../store/linkSlice";
 
-export default function Filter(props: any) {
+export default function Filter() {
   const dispatch = useDispatch();
 
   const [year, setYear] = useState<string>("");
@@ -31,51 +31,22 @@ export default function Filter(props: any) {
             <h2>type</h2>
             <p>
               <label>
-                <input
-                  type="radio"
-                  onClick={(event) => {
-                    typeName(event);
-                  }}
-                  value="movie"
-                  name="type"
-                  defaultChecked={true}
-                />
+                <input type="radio" onClick={(event) => {typeName(event);}} value="movie" name="type" defaultChecked={true} />
                 movie
               </label>
               <label>
-                <input
-                  type="radio"
-                  onClick={(event) => {
-                    typeName(event);
-                  }}
-                  value="series"
-                  name="type"
-                />
+                <input type="radio" onClick={(event) => {typeName(event);}} value="series" name="type" />
                 series
               </label>
             </p>
           </div>
           <div>
             <h2>Search</h2>
-            <input
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-              value={search}
-              type="text"
-              placeholder="search"
-            />
+            <input onChange={(event) => {setSearch(event.target.value);}} value={search} type="text" placeholder="search" />
           </div>
           <div>
             <h2>year</h2>
-            <input
-              onChange={(event) => {
-                setYear(event.target.value);
-              }}
-              value={year}
-              type="number"
-              placeholder="year"
-            />
+            <input onChange={(event) => {setYear(event.target.value);}} value={year} type="number" placeholder="year" />
           </div>
           <div className="search_movie">
             <button onClick={getMovies}>Search</button>

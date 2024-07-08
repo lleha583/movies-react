@@ -6,15 +6,17 @@ import { fetchData } from "../../store/linkSlice";
 import store from "../../store";
 import "./movies.css";
 import { result } from "../../store/linkSlice";
+import { IState } from "../../store/linkSlice";
 
 const Catalog = lazy(() => {
   return import("../../components/Catalog/Catalog");
 });
 
 export default function Movies() {
-  const link = useSelector((state: any) => {return state.link});
+  const link = useSelector((state: {link: IState}) => {return state.link});
 
-  const [films, setFilms] = useState<any>([...result]);
+  const [filter, setFilter] = useState<boolean>(false)
+  const [films, setFilms] = useState<string[]>([...result]);
   const value = useDeferredValue(films)
 
 
@@ -31,7 +33,10 @@ export default function Movies() {
   return (
     <section className="section">
       <div className="filter">
-        <Filter />
+        <button onClick={(() => {setFilter(!filter); console.log(filter)})}>filter</button>
+        {
+          (filter === true) ? (<Filter />) : ''
+        }
       </div>
       <div id="film_scroll" className="films">
         <Suspense fallback={<Loading />}>

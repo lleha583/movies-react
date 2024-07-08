@@ -1,17 +1,18 @@
 .section {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .films {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 30px;
+    box-sizing: border-box;
 }
 
 #film_scroll {
-    border: 1px solid grey;
-    border-radius: 50px;
-    width: 75%;
-    padding: 30px;
+    width: 95%;
 }

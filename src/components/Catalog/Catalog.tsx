@@ -1,11 +1,16 @@
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./catalog.css";
 import noImage from "../../assets/icons/no-image.svg";
 import { page } from "../../store/linkSlice";
 
-export default function Catalog(props: any) {
+interface IProps {
+  films: string[]
+}
+
+export default function Catalog(props: IProps) {
+  console.log(props)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,16 +32,12 @@ export default function Catalog(props: any) {
   };
 
   return (
-    <>
+    <div className="catalog">
       {props.films.map((movie: any) => {
         return (
           <Link to={movie.imdbID}>
             <div className="film_block" key={movie.imdbID}>
-              {movie.Poster !== "N/A" ? (
-                <img src={movie.Poster} alt="" />
-              ) : (
-                <img src={noImage} />
-              )}
+              {movie.Poster !== "N/A" ? (<img src={movie.Poster} alt="" />) : (<img src={noImage} />)}
               <div className="film_name">
                 <p>{movie.Title}</p>
               </div>
@@ -44,6 +45,6 @@ export default function Catalog(props: any) {
           </Link>
         );
       })}
-    </>
+    </div>
   );
 }

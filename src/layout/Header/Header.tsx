@@ -22,6 +22,10 @@ export default function Header() {
         <div className="btn_modal">
           <p className="modal_line"></p>
         </div>
+        <div>
+        <span className="logo_start">BEST</span>
+        <span className="logo_end">Movies</span>
+        </div>
         {
           (modal === true) ?  (<SideBar />) : ('')
         }

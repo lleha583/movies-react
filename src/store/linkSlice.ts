@@ -2,9 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchData = createAsyncThunk(
   "/fetchData",
-  async function fetchMovies(value: any) {
-    const response = await fetch(
-      `${value.url}&type=${value.type}&s=${value.search}&page=${value.page}&y=${value.year}`,
+  async function fetchMovies(value: IState) {
+    const response = await fetch(`${value.url}&type=${value.type}&s=${value.search}&page=${value.page}&y=${value.year}`,
       { method: "GET" }
     );
     const data = await response.json();
@@ -12,7 +11,15 @@ export const fetchData = createAsyncThunk(
   }
 );
 
-export let result: any[] = [];
+export interface IState {
+  year: string,
+  search: string,
+  type: string,
+  page: number,
+  url: string,
+}
+
+export let result: string[] = [];
 
 const linkSlice = createSlice({
   name: "link",
@@ -24,22 +31,15 @@ const linkSlice = createSlice({
     url: "https://www.omdbapi.com/?apikey=ee37e9cf",
   },
   reducers: {
-    getSearch: (
-      state: any,
-      action: {
-        type: string;
-        payload: { year: string; search: string; type: string };
-      }
+    getSearch: (state: IState, action: {type: string;payload: { year: string; search: string; type: string };}
     ) => {
-      console.log(state);
-      state.search = action.payload.search;
+      state.search = action.payload.search.toLowerCase().replace("", "-");
       state.type = action.payload.type;
       state.year = action.payload.year;
       state.page = 1;
       result = [];
-      console.log(action);
     },
-    page: (state: any) => {
+    page: (state: IState) => {
       state.page++;
     },
   },
