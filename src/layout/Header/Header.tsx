@@ -1,6 +1,6 @@
 import "./header.css";
 import loop from "../../assets/icons/loop.svg";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 import SideBar from "../../components/Sidebar/SideBar";
 
