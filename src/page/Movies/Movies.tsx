@@ -33,7 +33,7 @@ export default function Movies() {
   return (
     <section className="section">
       <div className="filter">
-        <button onClick={(() => {setFilter(!filter); console.log(filter)})}>filter</button>
+        <button onClick={(() => {setFilter(!filter)})} className="filter_btn">filter</button>
         {
           (filter === true) ? (<Filter />) : ''
         }

@@ -1,0 +1,69 @@
+.navigate {
+    width: 100%;
+    padding: 10px 50px;
+    border-top: 2px solid #ad3a94;
+    background-color: #272727;
+    box-sizing: border-box;
+}
+
+.nav_btn {
+    width: 100px;
+    height: 50px;
+    background: none;
+    border: none;
+    font-size: 25px;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.open {
+    border-bottom: 2px solid #ad3a94    ;
+}
+
+.recomend_block {
+    width: 100%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.recomend_film {
+    width: 550px;
+    border-radius: 20px;
+    background-color: #272727;
+    display: flex;
+    gap: 40px;
+}
+
+.recomend_film img {
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+
+.recomend_info_name {
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.recomend_info_year {
+    margin: 20px 0;
+}
+
+.recomend_button {
+    width: 150px;
+    height: 50px;
+    margin-top: 90px;
+    border: none;
+    background-color: #ad3a94;
+    transition: 0.3s;
+}
+
+.recomend_button:hover {
+    cursor: pointer;
+    background-color: #df10b2;
+}

@@ -13,6 +13,18 @@
     box-sizing: border-box;
 }
 
+.filter {
+    align-self: flex-start;
+}
+
+.filter_btn {
+    width: 200px;
+    height: 50px;
+    background-color: #3f313a;
+    border: none;
+    font-size: 20px;
+}
+
 #film_scroll {
     width: 95%;
 }

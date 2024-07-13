@@ -7,7 +7,7 @@ export default function LineFilm(props: any) {
 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?apikey=ee37e9cf&type=${props.type}&s=${props.search}&page=1&limit=5`,
+      `https://www.omdbapi.com/?apikey=ee37e9cf&type=${props.type}&s=${props.search}&page=1`,
       {
         method: "GET",
       }
@@ -19,7 +19,7 @@ export default function LineFilm(props: any) {
   }, []);
 
   return (
-    <section className="block">
+    <div className="block">
       <div className="set_films">
         <h1>{props.category}</h1>
         <Link to={props.link} className="link">
@@ -40,6 +40,6 @@ export default function LineFilm(props: any) {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

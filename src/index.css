@@ -1,11 +1,11 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background-color: #000000;
+  background-color: #1f1f22;
 }
 
 section {
-  margin: 10px auto;
+  margin: 50px auto;
 }
 
 h1 {
@@ -19,6 +19,7 @@ p {
   margin: 0;
   padding: 0;
   color: #c5c5c5;
+  transition: 0.3s;
 }
 
 a {
@@ -26,13 +27,33 @@ a {
   padding: 0;
   color: #c5c5c5;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 a:hover {
   cursor: pointer;
+  color: #ff55a5;
 }
 
-.block {
-  margin: 80px 80px;
+.film_block {
+  width: 250px;
+  height: 400px;
+  position: relative;
 }
+
+.film_block img {
+  width: 250px;
+  height: 400px;
+  border-radius: 20px;
+
+}
+
+.film_name {
+  text-align: center;
+  font-size: 0;
+  transition: 0.3s;
+}
+
+
+
 

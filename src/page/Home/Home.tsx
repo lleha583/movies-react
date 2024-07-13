@@ -1,6 +1,7 @@
 import LineFilm from "../../components/LineFilm/LineFilm";
 import './home.css';
-import bg from '../../assets/icons/home_bg.png'
+import bg from '../../assets/background/home_bg.png'
+import Recomend from "../../components/Recomend/Recomend";
 
 export default function Home() {
 
@@ -14,8 +15,15 @@ export default function Home() {
         </div>
         <img src={bg} alt="" />
       </div>
+      <section className="line_film">
       <LineFilm category={"Top films"} type={"movie"} search={"iron-man"} link={'/movies'} />
+      </section>
+      <section>
+        <Recomend />
+      </section>
+      <section className="line_film">
       <LineFilm category={"Series"} type={"series"} search={"spider-man"} link={'/movies'}  />
+      </section>
     </>
   );
 }

@@ -12,6 +12,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    box-shadow: 0 0 50px 20px;
 }
 
 .bg div {
@@ -22,4 +23,11 @@
     font-size: 70px;
     display: inline;
     margin: 300px auto;
+}
+
+
+.line_film {
+    background-color: #28282d;
+    padding: 5px;
+    margin-top: 50px;
 }
