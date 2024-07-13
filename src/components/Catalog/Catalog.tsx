@@ -25,7 +25,7 @@ export default function Catalog(props: IProps) {
     let windowHeight = document.documentElement.clientHeight;
     let scroll = window.scrollY;
 
-    if (windowHeight + scroll === maxHeight) {
+    if (windowHeight + scroll - 50 === maxHeight) {
       dispatch(page());
     }
   };

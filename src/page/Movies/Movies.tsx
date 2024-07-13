@@ -21,9 +21,7 @@ export default function Movies() {
   const [films, setFilms] = useState<string[]>([...result]);
   const value = useDeferredValue(films)
 
-
   useEffect(() => {
-
   store.dispatch(fetchData(link));
     
   setTimeout(() => {
