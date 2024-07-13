@@ -7,6 +7,8 @@ import store from "../../store";
 import "./movies.css";
 import { result } from "../../store/linkSlice";
 import { IState } from "../../store/linkSlice";
+import { Routes, Route } from "react-router-dom";
+import Footer from "../../layout/Footer/Footer";
 
 const Catalog = lazy(() => {
   return import("../../components/Catalog/Catalog");
@@ -43,6 +45,9 @@ export default function Movies() {
           <Catalog films={value} />
         </Suspense>
       </div>
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
     </section>
   );
 }

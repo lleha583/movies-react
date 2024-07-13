@@ -1,7 +1,9 @@
-import tg from "../../assets/icons/tg.svg";
-import whatsapp from "../../assets/icons/whatsapp.svg";
-import inst from "../../assets/icons/insta.svg";
+import tg from "../../assets/icons/footer/tg.svg";
+import whatsapp from "../../assets/icons/footer/whatsapp.svg";
+import inst from "../../assets/icons/footer/insta.svg";
 import "./contact.css";
+import { Routes, Route } from "react-router-dom";
+import Footer from "../../layout/Footer/Footer";
 
 export default function Contact() {
   return (
@@ -15,6 +17,9 @@ export default function Contact() {
         <img src={inst} />
         <img src={whatsapp} />
       </div>
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
     </div>
   );
 }

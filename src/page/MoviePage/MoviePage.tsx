@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import "./moviePage.css";
 import noImage from "../../assets/icons/no-image.svg";
 import Loading from "../../components/Loading/Loading";
+import { Routes, Route } from "react-router-dom";
+import Footer from "../../layout/Footer/Footer";
 
 export default function MoviePage() {
   let imdbID = useParams();
@@ -19,16 +21,12 @@ export default function MoviePage() {
   console
 
   return (
-      <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading />}>
     <section>
       
       <div className="info">
         <div className="info_poster">
-          {info.Poster !== "N/A" ? (
-            <img src={info.Poster} alt="" />
-          ) : (
-            <img src={noImage} />
-          )}
+          {info.Poster !== "N/A" ? (<img src={info.Poster} alt="" />) : (<img src={noImage} />)}
         </div>
         <div>
           <div className="info_name">
@@ -73,6 +71,9 @@ export default function MoviePage() {
       </div>
           
     </section>
+    <Routes>
+        <Route path="/" element={<Footer />} />
+    </Routes>
     </Suspense>
   );
 }

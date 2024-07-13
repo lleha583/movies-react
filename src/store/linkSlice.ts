@@ -39,6 +39,9 @@ const linkSlice = createSlice({
       state.page = 1;
       result = [];
     },
+    getSearchHeader: (state: IState, action: {type: string; payload: string}) => {
+      state.search = action.payload.toLowerCase().replace("", "-");
+    },
     page: (state: IState) => {
       state.page++;
     },
@@ -50,6 +53,6 @@ const linkSlice = createSlice({
   },
 });
 
-export const { page, getSearch } = linkSlice.actions;
+export const { page, getSearch, getSearchHeader } = linkSlice.actions;
 
 export default linkSlice.reducer;

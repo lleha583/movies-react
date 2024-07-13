@@ -10,7 +10,6 @@ interface IProps {
 }
 
 export default function Catalog(props: IProps) {
-  console.log(props)
   const dispatch = useDispatch();
 
   useEffect(() => {

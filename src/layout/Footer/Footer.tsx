@@ -1,8 +1,8 @@
 import "./footer.css";
-import tg from "../../assets/icons/tg.svg";
-import whatsapp from "../../assets/icons/whatsapp.svg";
-import inst from "../../assets/icons/insta.svg";
-import { Link } from "react-router-dom";
+import tg from "../../assets/icons/footer/tg.svg";
+import whatsapp from "../../assets/icons/footer/whatsapp.svg";
+import inst from "../../assets/icons/footer/insta.svg";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -26,6 +26,7 @@ export default function Footer() {
           <img src={whatsapp} />
         </div>
       </div>
+      <Outlet />
     </footer>
   );
 }

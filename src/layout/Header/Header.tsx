@@ -5,9 +5,16 @@ import { useState } from "react";
 import home from "../../assets/icons/header/home.svg";
 import catalog from "../../assets/icons/header/tv.svg";
 import about from "../../assets/icons/header/about.svg";
+import { getSearchHeader } from "../../store/linkSlice";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
   const [text, setText] = useState<string>("");
+  const dispatch = useDispatch();
+
+  const setSearch = () => {
+    dispatch(getSearchHeader(text))
+  }
 
   return (
     <header>
@@ -38,19 +45,12 @@ export default function Header() {
         </Link>
       </nav>
       <div className="search">
-        <input
-          onChange={(event) => {
-            setText(event.target.value);
-          }}
-          type="text"
-          placeholder="Search"
-          value={text}
-        />
-        <div className="line">
-          <Link to={"/movies"}>
+        <input onChange={(event) => { setText(event.target.value); }} type="text" placeholder="Search" value={text}/>
+        <Link to={"/movies"} onClick={() => {setSearch()}}>
+          <div className="line">
             <img src={loop} />
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </header>
   );
