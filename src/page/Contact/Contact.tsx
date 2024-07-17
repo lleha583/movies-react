@@ -17,9 +17,6 @@ export default function Contact() {
         <img src={inst} />
         <img src={whatsapp} />
       </div>
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes>
     </div>
   );
 }

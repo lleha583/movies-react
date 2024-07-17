@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchData = createAsyncThunk(
-  "/fetchData",
+  "movie/fetchData",
   async function fetchMovies(value: IState) {
     const response = await fetch(`${value.url}&type=${value.type}&s=${value.search}&page=${value.page}&y=${value.year}`,
       { method: "GET" }

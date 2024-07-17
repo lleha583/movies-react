@@ -26,9 +26,6 @@ export default function Home() {
       <section className="line_film">
       <LineFilm category={"Series"} type={"series"} search={"spider-man"} link={'/movies'}  />
       </section>
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes>
     </>
   );
 }

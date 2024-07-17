@@ -21,7 +21,6 @@ export default function MoviePage() {
   console
 
   return (
-    <Suspense fallback={<Loading />}>
     <section>
       
       <div className="info">
@@ -71,9 +70,5 @@ export default function MoviePage() {
       </div>
           
     </section>
-    <Routes>
-        <Route path="/" element={<Footer />} />
-    </Routes>
-    </Suspense>
   );
 }

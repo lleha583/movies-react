@@ -43,9 +43,6 @@ export default function Movies() {
           <Catalog films={value} />
         </Suspense>
       </div>
-      <Routes>
-        <Route path="/" element={<Footer />} />
-      </Routes>
     </section>
   );
 }
