@@ -26,7 +26,6 @@ export default function Footer() {
           <img src={whatsapp} />
         </div>
       </div>
-      <Outlet />
     </footer>
   );
 }

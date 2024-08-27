@@ -23,19 +23,23 @@ export default function Filter() {
     dispatch(getSearch(options));
   };
 
+  const setMovies = (e: any)=>{
+    if(e.code === "Enter") getMovies()
+  }
+
   return (
     <>
-      <div className="filter">
+      <div onKeyDown={setMovies} className="filter">
         <div className="filter__inner">
           <div className="type">
             <h2>type</h2>
             <p>
               <label>
-                <input type="radio" onClick={(event) => {typeName(event);}} value="movie" name="type" defaultChecked={true} />
+                <input type="radio" onChange={(event) => {typeName(event); }} value="movie" name="type" defaultChecked={true} />
                 movie
               </label>
               <label>
-                <input type="radio" onClick={(event) => {typeName(event);}} value="series" name="type" />
+                <input type="radio" onChange={(event) => {typeName(event);}} value="series" name="type" />
                 series
               </label>
             </p>
