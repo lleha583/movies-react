@@ -1,38 +1,62 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./catalog.css";
 import noImage from "../../assets/icons/no-image.svg";
-import { page } from "../../store/linkSlice";
+import { fetchData, page } from "../../store/linkSlice";
+import Loading from "../Loading/Loading";
+import store from "../../store";
+import { IState } from "../../store/linkSlice";
 
-interface IProps {
-  films: string[]
-}
-
-export default function Catalog(props: IProps) {
+export default function Catalog() {
+  
+  const link = useSelector((state: {link: IState}) => {return state.link});
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    document.addEventListener("scroll", scrollHandler);
+  const [films, setFilms] = useState<string[]>([]);
+  const [loadData, setLoadData] = useState<boolean>(false)
 
-    return function () {
+  useEffect(()=> {
+
+    store.dispatch(fetchData(link))
+      .then(response => {return response.payload})
+      .then(value=> {
+
+        setLoadData(false)
+        if(value.Response == "False") return document.removeEventListener("scroll", scrollHandler) ;
+        
+        setFilms([...films, ...value.Search])
+      })
+  }, [link])
+
+  useEffect(() => {
+
+    document.addEventListener("scroll", scrollHandler)
+
+    return () => {
       document.removeEventListener("scroll", scrollHandler);
     };
   }, []);
 
-  const scrollHandler = () => {
+
+  const scrollHandler = useCallback(()=> {
+    
     let maxHeight = document.body.scrollHeight;
     let windowHeight = document.documentElement.clientHeight;
     let scroll = window.scrollY;
 
-    if (windowHeight + scroll - 50 === maxHeight) {
+    if (windowHeight + scroll === maxHeight) {
+      console.log('fecrferf')
+      setLoadData(true)
       dispatch(page());
     }
-  };
+  }, [])
+
 
   return (
+    <>
     <div className="catalog">
-      {props.films.map((movie: any) => {
+      {films.map((movie: any) => {
         return (
           <Link to={movie.imdbID}>
             <div className="film_block" key={movie.imdbID}>
@@ -45,5 +69,7 @@ export default function Catalog(props: IProps) {
         );
       })}
     </div>
+    {loadData && <Loading />}
+    </>
   );
 }

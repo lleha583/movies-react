@@ -8,12 +8,9 @@ export default function Recomend() {
   const [film, setFilm] = useState<any>([]);
 
   useEffect(() => {
-    fetch(
-      `https://www.omdbapi.com/?apikey=ee37e9cf&type=${type}&s=sniper&page=1`,
-      {
+    fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&type=${type}&s=sniper&page=1`,{
         method: "GET",
-      }
-    )
+      })
       .then((response) => response.json())
       .then((value) => {
         console.log(value);
@@ -21,27 +18,14 @@ export default function Recomend() {
       });
   }, [type]);
 
-  const getType = (type: string) => {
-    if (type === "movie") {
-        setType('movie')
-        document.getElementById('series')!.className = "nav_btn"
-        document.getElementById('movie')!.className = "nav_btn open"
-    }
-    if (type === "series") {
-        setType('series')
-        document.getElementById('series')!.className = "nav_btn open"
-        document.getElementById('movie')!.className = "nav_btn"
-
-    }
-  }
 
   return (
     <>
       <div className="navigate">
         <h1>Recomend</h1>
         <div>
-          <button onClick={() => {getType('movie')}} id="movie" className="nav_btn open">movies</button>
-          <button onClick={() => {getType('series')}} id="series" className="nav_btn">series</button>
+          <button onClick={() => {setType('movie')}} id="movie" className={(type === 'movie') ? 'nav_btn  open' : 'nav_btn'}>movies</button>
+          <button onClick={() => {setType('series')}} id="series" className={(type === 'series') ? 'nav_btn  open' : 'nav_btn'}>series</button>
         </div>
       </div>
       <div className="recomend__inner">

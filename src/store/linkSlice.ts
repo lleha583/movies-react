@@ -7,7 +7,8 @@ export const fetchData = createAsyncThunk(
       { method: "GET" }
     );
     const data = await response.json();
-    return data.Search;
+    console.log(data)
+    return data;
   }
 );
 
@@ -17,9 +18,8 @@ export interface IState {
   type: string,
   page: number,
   url: string,
+  lastStatus: string
 }
-
-export let result: string[] = [];
 
 const linkSlice = createSlice({
   name: "link",
@@ -29,6 +29,7 @@ const linkSlice = createSlice({
     type: "movie",
     page: 1,
     url: "https://www.omdbapi.com/?apikey=ee37e9cf",
+    lastStatus: ''
   },
   reducers: {
     getSearch: (state: IState, action: {type: string;payload: { year: string; search: string; type: string };}
@@ -37,7 +38,6 @@ const linkSlice = createSlice({
       state.type = action.payload.type;
       state.year = action.payload.year;
       state.page = 1;
-      result = [];
     },
     getSearchHeader: (state: IState, action: {type: string; payload: string}) => {
       state.search = action.payload.toLowerCase().replace("", "-");
@@ -46,11 +46,11 @@ const linkSlice = createSlice({
       state.page++;
     },
   },
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
-      result = [...result, ...action.payload];
-    });
-  },
+      state.lastStatus = action.payload.Response
+    })
+  }
 });
 
 export const { page, getSearch, getSearchHeader } = linkSlice.actions;

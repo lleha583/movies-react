@@ -6,12 +6,9 @@ export default function LineFilm(props: any) {
   const [arr, setArr] = useState<any>([]);
 
   useEffect(() => {
-    fetch(
-      `https://www.omdbapi.com/?apikey=ee37e9cf&type=${props.type}&s=${props.search}&page=1`,
-      {
+    fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&type=${props.type}&s=${props.search}&page=1`, {
         method: "GET",
-      }
-    )
+      })
       .then((response) => response.json())
       .then((value) => {
         setArr([...value.Search]);
@@ -29,7 +26,7 @@ export default function LineFilm(props: any) {
       <div className="list">
         {arr.map((item: any) => {
           return (
-            <Link to={"/movies/" + item.imdbID}>
+            <Link to={"/movies/" + item.imdbID} key={item.id}>
               <div className="film_block">
                 <img src={item.Poster} alt="" />
                 <div className="film_name">
