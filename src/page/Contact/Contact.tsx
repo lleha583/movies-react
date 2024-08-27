@@ -2,8 +2,6 @@ import tg from "../../assets/icons/footer/tg.svg";
 import whatsapp from "../../assets/icons/footer/whatsapp.svg";
 import inst from "../../assets/icons/footer/insta.svg";
 import "./contact.css";
-import { Routes, Route } from "react-router-dom";
-import Footer from "../../layout/Footer/Footer";
 
 export default function Contact() {
   return (

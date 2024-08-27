@@ -1,7 +1,6 @@
-import { useState, Suspense, lazy, useEffect, useDeferredValue } from "react";
+import { useState, Suspense, lazy } from "react";
 import Filter from "../../components/Filter/Filter";
 import Loading from "../../components/Loading/Loading";
-import { useSelector } from "react-redux";
 import "./movies.css";
 
 const Catalog = lazy(() => {

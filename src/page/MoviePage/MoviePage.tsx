@@ -1,10 +1,7 @@
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./moviePage.css";
 import noImage from "../../assets/icons/no-image.svg";
-import Loading from "../../components/Loading/Loading";
-import { Routes, Route } from "react-router-dom";
-import Footer from "../../layout/Footer/Footer";
 
 export default function MoviePage() {
   let imdbID = useParams();

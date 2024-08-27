@@ -2,8 +2,6 @@ import LineFilm from "../../components/LineFilm/LineFilm";
 import './home.css';
 import bg from '../../assets/background/home_bg.png'
 import Recomend from "../../components/Recomend/Recomend";
-import { Routes, Route } from "react-router-dom";
-import Footer from "../../layout/Footer/Footer";
 
 export default function Home() {
 

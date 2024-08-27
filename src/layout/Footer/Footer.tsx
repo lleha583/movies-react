@@ -2,7 +2,7 @@ import "./footer.css";
 import tg from "../../assets/icons/footer/tg.svg";
 import whatsapp from "../../assets/icons/footer/whatsapp.svg";
 import inst from "../../assets/icons/footer/insta.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (

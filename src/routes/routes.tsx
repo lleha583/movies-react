@@ -5,7 +5,6 @@ import Movies from "../page/Movies/Movies";
 import Contact from "../page/Contact/Contact";
 import NotFound from "../page/NotFound";
 import MoviePage from "../page/MoviePage/MoviePage";
-import Footer from "../layout/Footer/Footer";
 
 export const router = createBrowserRouter([
   {
@@ -31,9 +30,5 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
-  },
-  {
-    path: "", 
-    element: <Footer />
   }
 ]);
