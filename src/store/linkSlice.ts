@@ -7,7 +7,6 @@ export const fetchData = createAsyncThunk(
       { method: "GET" }
     );
     const data = await response.json();
-    console.log(data)
     return data;
   }
 );

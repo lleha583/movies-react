@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./catalog.css";
@@ -46,7 +46,6 @@ export default function Catalog() {
     let scroll = window.scrollY;
 
     if (windowHeight + scroll === maxHeight) {
-      console.log('fecrferf')
       setLoadData(true)
       dispatch(page());
     }

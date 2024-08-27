@@ -12,10 +12,7 @@ export default function Recomend() {
         method: "GET",
       })
       .then((response) => response.json())
-      .then((value) => {
-        console.log(value);
-        setFilm([...value.Search]);
-      });
+      .then((value) => {setFilm([...value.Search]);});
   }, [type]);
 
 
