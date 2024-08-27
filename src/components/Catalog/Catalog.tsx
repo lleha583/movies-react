@@ -21,10 +21,11 @@ export default function Catalog() {
     store.dispatch(fetchData(link))
       .then(response => {return response.payload})
       .then(value=> {
-
         setLoadData(false)
-        if(value.Response == "False") return document.removeEventListener("scroll", scrollHandler) ;
-        
+
+        if(value.Response === "False") return document.removeEventListener("scroll", scrollHandler) ;
+        if(link.page === 1) return setFilms([...value.Search])
+          
         setFilms([...films, ...value.Search])
       })
   }, [link])
@@ -36,7 +37,7 @@ export default function Catalog() {
     return () => {
       document.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
+  }, [link.search, link.type]);
 
 
   const scrollHandler = useCallback(()=> {
