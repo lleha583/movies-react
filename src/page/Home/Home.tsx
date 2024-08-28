@@ -16,13 +16,13 @@ export default function Home() {
         <img src={bg} alt="" />
       </div>
       <section className="line_film">
-      <LineFilm category={"Top films"} type={"movie"} search={"iron-man"} link={'/movies'} />
+      <LineFilm type={"movie"} search={"iron-man"} link={'/movies'} />
       </section>
       <section>
         <Recomend />
       </section>
       <section className="line_film">
-      <LineFilm category={"Series"} type={"series"} search={"spider-man"} link={'/movies'}  />
+      <LineFilm type={"series"} search={"spider-man"} link={'/movies'}  />
       </section>
     </>
   );

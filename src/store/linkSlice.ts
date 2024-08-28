@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { IState } from "../interface/interface";
 
 export const fetchData = createAsyncThunk(
   "movie/fetchData",
@@ -11,15 +12,6 @@ export const fetchData = createAsyncThunk(
   }
 );
 
-export interface IState {
-  year: string,
-  search: string,
-  type: string,
-  page: number,
-  url: string,
-  lastStatus: string
-}
-
 const linkSlice = createSlice({
   name: "link",
   initialState: {
@@ -31,7 +23,7 @@ const linkSlice = createSlice({
     lastStatus: ''
   },
   reducers: {
-    getSearch: (state: IState, action: {type: string;payload: { year: string; search: string; type: string };}
+    getSearch: (state: IState, action: {type: string; payload: { year: string; search: string; type: string };}
     ) => {
       state.search = action.payload.search.toLowerCase().replace("", "-");
       state.type = action.payload.type;

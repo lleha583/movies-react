@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./recomend.css";
 import { Link } from "react-router-dom";
 import noImage from "../../assets/icons/no-image.svg";  
+import { IListFilm } from "../../interface/interface";
 
 export default function Recomend() {
   const [type, setType] = useState("movie");
-  const [film, setFilm] = useState<any>([]);
+  const [film, setFilm] = useState<IListFilm[]>([]);
+
 
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&type=${type}&s=sniper&page=1`,{
@@ -27,10 +29,9 @@ export default function Recomend() {
       </div>
       <div className="recomend__inner">
         <div className="recomend_block">
-          {film.map((item: any) => {
+          {film.map((item: IListFilm, index) => {
             return (
-              <>
-                <div className="recomend_film">
+                <div className="recomend_film" key={index}>
                 {item.Poster !== "N/A" ? (<img src={item.Poster} alt="" />) : (<img src={noImage} />)}
                   <div className="recomend_info">
                     <p className="recomend_info_name">{item.Title}</p>
@@ -41,7 +42,6 @@ export default function Recomend() {
                     </Link>
                   </div>
                 </div>
-              </>
             );
           })}
         </div>

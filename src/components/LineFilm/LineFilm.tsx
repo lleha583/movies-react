@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
 import "./lineFilm.css";
 import { Link } from "react-router-dom";
+import { IListFilm } from "../../interface/interface";
 
-export default function LineFilm(props: any) {
-  const [arr, setArr] = useState<any>([]);
+interface IProps {
+  type: string,
+  search: string,
+  link: string
+}
+
+export default function LineFilm({ type, search, link }: IProps) {
+  const [arr, setArr] = useState<IListFilm[]>([]);
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&type=${props.type}&s=${props.search}&page=1`, {
+    fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&type=${type}&s=${search}&page=1`, {
         method: "GET",
       })
       .then((response) => response.json())
@@ -18,15 +25,15 @@ export default function LineFilm(props: any) {
   return (
     <div className="block">
       <div className="set_films">
-        <h1>{props.category}</h1>
-        <Link to={props.link} className="link">
+        <h1>{type}</h1>
+        <Link to={link} className="link">
           view all &rarr;
         </Link>
       </div>
       <div className="list">
-        {arr.map((item: any) => {
+        {arr.map((item: IListFilm, index) => {
           return (
-            <Link to={"/movies/" + item.imdbID} key={item.id}>
+            <Link to={"/movies/" + item.imdbID} key={index}>
               <div className="film_block">
                 <img src={item.Poster} alt="" />
                 <div className="film_name">

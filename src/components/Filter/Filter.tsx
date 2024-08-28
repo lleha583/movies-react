@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, EventHandler, useState } from "react";
 import "./filter.css";
 import { useDispatch } from "react-redux";
 import { getSearch } from "../../store/linkSlice";
@@ -10,7 +10,7 @@ export default function Filter() {
   const [search, setSearch] = useState<string>("avengers");
   const [type, setType] = useState<string>("movie");
 
-  const typeName = (event: any) => {
+  const typeName = (event: ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value);
   };
 

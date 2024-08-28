@@ -35,10 +35,9 @@
     display: block;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: 0.2s ;
 }
 
 .film_block:hover {

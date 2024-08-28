@@ -6,14 +6,14 @@ import noImage from "../../assets/icons/no-image.svg";
 import { fetchData, page } from "../../store/linkSlice";
 import Loading from "../Loading/Loading";
 import store from "../../store";
-import { IState } from "../../store/linkSlice";
+import { IListFilm, IState } from "../../interface/interface";
 
 export default function Catalog() {
   
   const link = useSelector((state: {link: IState}) => {return state.link});
   const dispatch = useDispatch();
 
-  const [films, setFilms] = useState<string[]>([]);
+  const [films, setFilms] = useState<IListFilm[]>([]);
   const [loadData, setLoadData] = useState<boolean>(false)
 
   useEffect(()=> {
@@ -30,6 +30,7 @@ export default function Catalog() {
       })
   }, [link])
 
+  //pagination
   useEffect(() => {
 
     document.addEventListener("scroll", scrollHandler)
@@ -52,11 +53,10 @@ export default function Catalog() {
     }
   }, [])
 
-
   return (
     <>
     <div className="catalog">
-      {films.map((movie: any) => {
+      {films.map((movie: IListFilm) => {
         return (
           <Link to={movie.imdbID}>
             <div className="film_block" key={movie.imdbID}>

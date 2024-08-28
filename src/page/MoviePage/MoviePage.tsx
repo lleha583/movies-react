@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./moviePage.css";
 import noImage from "../../assets/icons/no-image.svg";
+import { IFilm } from "../../interface/interface";
 
 export default function MoviePage() {
   let imdbID = useParams();
 
-  const [info, setInfo] = useState<any>({});
+  const [info, setInfo] = useState<IFilm>({});
 
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?apikey=ee37e9cf&i=${imdbID.id}`, {
@@ -15,7 +16,6 @@ export default function MoviePage() {
       .then((response) => response.json())
       .then((value) => setInfo({ ...value }));
   }, []);
-  console
 
   return (
     <section>
